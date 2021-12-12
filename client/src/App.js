@@ -9,11 +9,11 @@ import './App.css';
 
 function App() {
 
-  const despatch = useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    despatch(tickersOperations.fetchTickers());
-  }, [despatch]);
+    dispatch(tickersOperations.fetchTickers());
+  }, [dispatch]);
 
 
   return (
