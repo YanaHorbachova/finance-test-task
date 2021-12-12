@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { tickersOperations } from './redux/tickers';
 import { tickersSelectors } from './redux/tickers';
+import Container from './components/Container';
 import './App.css';
 
 function App() {
@@ -17,7 +18,9 @@ function App() {
 
   return (
     <div className="App">
-
+      <Container>
+        
+      </Container>
     </div>
   );
 }
