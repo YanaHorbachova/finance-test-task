@@ -3,7 +3,8 @@ import { useDispatch } from 'react-redux';
 import { tickersOperations } from './redux/tickers';
 
 import Container from './components/Сontainer';
-import TickersList from './components/TickersList'
+import TickersList from './components/TickersList';
+import FormOnChangeInterval from './components/FormOnChengeInterval';
 
 import './App.css';
 
@@ -19,6 +20,7 @@ function App() {
   return (
     <div className="App">
       <Container>
+        <FormOnChangeInterval/>
         <TickersList/>
       </Container>
     </div>
