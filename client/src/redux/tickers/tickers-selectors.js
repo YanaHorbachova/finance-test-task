@@ -1,4 +1,5 @@
-const getTickers = state => state.tickers.fetchedTickers;
+const getTickers = state => state.tickers;
 const getError = state => state.tickers.error;
+const connectionSelector = state => state.isConnected;
 
-export default { getTickers, getError };
+export { getTickers, getError, connectionSelector };

@@ -1,20 +1,31 @@
-import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
-import tickersActions from './tickers-actions';
+import { tickersSuccess, tickersError, stopConnection } from './tickers-actions';
 
-const initialTickersState = null;
+const initialTickersState = {
+  prevTickers: [],
+  currentTickers: [],
+};
 
 const fetchedTickers = createReducer(initialTickersState, {
-  [tickersActions.tickersSuccess]: (_, { payload }) => [...payload],
+  [tickersSuccess]: (state, { payload }) => ({
+    prevTickers: state.currentTickers,
+    currentTickers: payload,
+  }),
 });
 
 const error = createReducer(null, {
-  [tickersActions.tickersError]: (_, { payload }) => payload,
+  [tickersError]: (_, { payload }) => payload,
 
-  [tickersActions.tickersSuccess]: () => null,
+  [tickersSuccess]: () => null,});
+
+const connectionReducer = createReducer(false, {
+  [tickersSuccess]: (_, { payload }) => Boolean(payload),
+  [stopConnection]: (_, __) => false,
 });
 
-export default combineReducers({
+const reducers = {
   fetchedTickers,
   error,
-});
+  connectionReducer,
+};
+export default reducers;

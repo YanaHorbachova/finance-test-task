@@ -4,4 +4,13 @@ const tickersRequest = createAction('tickers/fetchTickersRequest');
 const tickersSuccess = createAction('tickers/fetchTickersSuccess');
 const tickersError = createAction('tickers/fetchTickersError');
 
-export default { tickersRequest, tickersSuccess, tickersError };
+const setConnection = createAction('connection/setConnection');
+const stopConnection = createAction('connection/stopConnection');
+
+export {
+  tickersRequest,
+  tickersSuccess,
+  tickersError,
+  setConnection,
+  stopConnection,
+};

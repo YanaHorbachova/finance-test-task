@@ -1,24 +1,35 @@
-import tickersActions from './tickers-actions';
 import socket from '../../helpers/socket';
+import {
+  tickersRequest,
+  tickersSuccess,
+  tickersError,
+  setConnection,
+} from './tickers-actions';
 
 const fetchTickers = () => async dispatch => {
-  dispatch(tickersActions.tickersRequest());
+  dispatch(tickersRequest());
 
   socket.emit('start');
   socket.on('ticker', tickers =>
-    dispatch(tickersActions.tickersSuccess(tickers)),
+    dispatch(tickersSuccess(tickers)),
   );
 
   socket.on('connect_error', () =>
-    dispatch(tickersActions.tickersError('connect_error')),
+    dispatch(tickersError('connect_error')),
   );
   socket.on('connect_failed', () =>
-    dispatch(tickersActions.tickersError('connect_failed')),
+    dispatch(tickersError('connect_failed')),
   );
   socket.on('disconnect', () =>
-    dispatch(tickersActions.tickersError('disconnect')),
+    dispatch(tickersError('disconnect')),
   );
+}
+
+ const connectionOperation = () => {
+  const actionConnect = async dispatch => {
+    dispatch(setConnection());
+  };
+  return actionConnect;
 };
 
-
-export default { fetchTickers };
+export { fetchTickers, connectionOperation };

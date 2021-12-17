@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux';
-import { tickersOperations } from './redux/tickers';
+import { fetchTickers} from './redux/tickers/tickers-operations';
 
 import Container from './components/Сontainer';
 import TickersList from './components/TickersList';
@@ -13,7 +13,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(tickersOperations.fetchTickers());
+    dispatch(fetchTickers());
   }, [dispatch]);
 
 
