@@ -13,9 +13,6 @@ const TickersList = () => {
     useEffect(() => {
       dispatch(fetchTickers());
     }, [dispatch]);
-
-    console.log(useSelector(getTickers))
-    console.log( dispatch(fetchTickers()))
   
     const { prevTickers, currentTickers } = useSelector(getTickers);
     const prevPrices = prevTickers.map(ticker => ticker.price);
@@ -24,27 +21,24 @@ const TickersList = () => {
 
     return (
         <div className={s.list}>
-            <h1 className="TickerTitle">Tickers Live</h1>
-            <div className="TickerListWrapper">
-                <ul className="TickerHeadingList">
-                <li className="TickerHeadingListItem">Ticker</li>
-                <li className="TickerHeadingListItem">Price</li>
-                <li className="TickerHeadingListItem">Change</li>
-                <li className="TickerHeadingListItem">Change %</li>
-                <li className="TickerHeadingListItem">Dividend</li>
-                <li className="TickerHeadingListItem">Yield</li>
-                </ul>
-                <ul className="TickersList">
-                {currentTickers.map((ticker, index) => (
-                    <TickersItem
-                    key={v4()}
-                    {...ticker}
-                    oldPrice={prevPrices[index]}
-                    />
-                ))}
+            <div className={s.TitleItem}>
+                <h2 className={s.title}> Ticker</h2>
+                <ul className={s.TitleListItem}>
+                    <li className={s.TitleItem}>Price</li>
+                    <li className={s.TitleItem}>Change</li>
+                    <li className={s.TitleItem}>Change %</li>
+                    <li className={s.TitleItem}>Dividend</li>
                 </ul>
             </div>
+            {currentTickers.map((ticker, index) => (
+                <TickersItem
+                key={v4()}
+                {...ticker}
+                oldPrice={prevPrices[index]}
+                />
+            ))}
         </div>
+        
     )
 
 }

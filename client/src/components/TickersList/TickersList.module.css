@@ -2,6 +2,15 @@
   padding: 0;
   list-style: none;    
 }
+.TitleItem{
+  display: flex;
+  align-items: center;  
+  text-align: center;
+  list-style: none;
+  height: 60px;
+  margin: 10px;
+  padding: 15px 10px;
+}
 
 .item{
   display: flex;
@@ -21,7 +30,8 @@
   border-radius: 30%;
 }
 
-.listStatistics{
+.listStatistics,
+.TitleListItem {
     display: flex;
     width: 600px;
     justify-content: space-between;
